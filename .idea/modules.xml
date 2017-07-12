@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SqlShiro/SqlShiro.iml" filepath="$PROJECT_DIR$/SqlShiro/SqlShiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/echarts/echarts.iml" filepath="$PROJECT_DIR$/echarts/echarts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/first.iml" filepath="$PROJECT_DIR$/first.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firstshiro/firstshiro.iml" filepath="$PROJECT_DIR$/firstshiro/firstshiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firstsvn/firstsvn.iml" filepath="$PROJECT_DIR$/firstsvn/firstsvn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc/springmvc.iml" filepath="$PROJECT_DIR$/springmvc/springmvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm/ssm.iml" filepath="$PROJECT_DIR$/ssm/ssm.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+    <context:component-scan base-package="com.test"/>
+    <mvc:annotation-driven/>
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 连接池-->
+    <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/shiro"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <!--域-->
+    <bean class="org.apache.shiro.realm.jdbc.JdbcRealm" id="jr">
+        <property name="dataSource" ref="ds"/>
+        <property name="permissionsLookupEnabled" value="true"/>
+        <property name="authenticationQuery" value="select pass from users where account=?"/>
+        <property name="userRolesQuery" value="select role_name from user_role left join roles using(rid) left join users using(uid) where account=?"/>
+        <property name="permissionsQuery" value="select perm_name from role_perm left join perms using(pid) left join roles using(rid) where role_name=?"/>
+    </bean>
+    <bean class="org.apache.shiro.cache.MemoryConstrainedCacheManager" id="manager"/>
+    <!--安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="jr"/>
+        <property name="cacheManager" ref="manager"/>
+    </bean>
+    <!-- shiro过滤器-->
+    <bean id="shiro" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 无权访问时跳转的页面-->
+        <property name="unauthorizedUrl" value="/noqx.do"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /admin/**=authc,roles[经理]
+                /**=anon
+            </value>
+        </property>
+    </bean>
+</beans>

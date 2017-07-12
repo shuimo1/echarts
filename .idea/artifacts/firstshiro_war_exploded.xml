@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="firstshiro:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/firstshiro_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="firstshiro/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="firstshiro" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="D:/IT/jar包/shiro/commons-beanutils-1.9.3.jar" />
+          <element id="file-copy" path="D:/IT/jar包/shiro/commons-logging-1.2.jar" />
+          <element id="file-copy" path="D:/IT/jar包/shiro/log4j-1.2.17.jar" />
+          <element id="file-copy" path="D:/IT/jar包/shiro/shiro-all-1.3.2.jar" />
+          <element id="file-copy" path="D:/IT/jar包/shiro/slf4j-api-1.7.24.jar" />
+          <element id="file-copy" path="D:/IT/jar包/shiro/slf4j-log4j12-1.7.24.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
